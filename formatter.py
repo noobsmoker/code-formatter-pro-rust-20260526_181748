@@ -18,13 +18,17 @@ def main():
     parser.add_argument('-w', '--write', action='store_true')
     args = parser.parse_args()
     with open(args.file, 'r') as f:
-        content = f.read()
+    content = f.read()
     formatted = format_code(content, args.language)
     if args.write:
-        with open(args.file, 'w') as f:
-            f.write(formatted)
-        print(f"Formatted {args.file}")
+    with open(args.file, 'w') as f:
+    f.write(formatted)
+    print(f"Formatted {args.file}")
     else:
-        print(formatted)
+    print(formatted)
+    except Exception as e:
+    print(f"Error: {e}", file=sys.stderr)
+    sys.exit(1)
+
 if __name__ == '__main__':
     main()
